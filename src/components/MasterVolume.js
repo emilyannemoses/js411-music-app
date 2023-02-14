@@ -5,37 +5,36 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
+import Stack from '@mui/material/Stack';
+import Slider from '@mui/material/Slider';
+import VolumeDown from '@mui/icons-material/VolumeDown';
+import VolumeUp from '@mui/icons-material/VolumeUp';
 
 export default function MasterVolume() {
+  const [value, setValue] = React.useState(30);
+  
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
-    <Card sx={{ minWidth: 350, m: 5, }}>
+    <Card sx={{ minWidth: 300, minHeight: 200, m: 6, }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
+        <Typography variant="h5" component="div" sx={{ mb: 1.5 }}>
+          Master Volume
         </Typography>
         <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+          Overrides all other sound settings in this application.
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Box sx={{ width: 200 }}>
+          <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+            <VolumeDown />
+            <Slider aria-label="Volume" value={value} onChange={handleChange} />
+            <VolumeUp />
+          </Stack>
+        </Box>
       </CardActions>
     </Card>
   );

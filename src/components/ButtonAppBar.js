@@ -1,4 +1,4 @@
-import React,{ useContext } from 'react';
+import React,{ useState, useContext, createContext } from 'react';
 import { LoginContext } from '../App';
 import LogIn from './LogIn';
 import AppBar from '@mui/material/AppBar';
@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export default function ButtonAppBar() {
-  const { setLoggedIn } = useContext(LoginContext);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   const handleClick = (e) => {
       e.preventDefault();
@@ -33,7 +33,15 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          <Button onClick={LogIn} color="inherit">Log In</Button>
+          <Button onClick={LogIn} color="inherit">
+            {<LoginContext.Provider value={{ loggedIn, setLoggedIn }}>
+              {loggedIn ? (
+                "Log In"
+              ) : (
+                "Log Out"
+              )}
+            </LoginContext.Provider>}
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

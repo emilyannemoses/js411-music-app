@@ -2,6 +2,7 @@ import React, { useState, createContext } from 'react';
 import ButtonAppBar from './components/ButtonAppBar';
 import Dashboard from './components/Dashboard';
 import LogIn from './components/LogIn';
+import './App.css';
 
 export const LoginContext = createContext({
   loggedIn: false,
