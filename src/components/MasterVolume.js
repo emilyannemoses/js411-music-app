@@ -10,11 +10,10 @@ import Slider from '@mui/material/Slider';
 import VolumeDown from '@mui/icons-material/VolumeDown';
 import VolumeUp from '@mui/icons-material/VolumeUp';
 
-export default function MasterVolume() {
-  const [value, setValue] = React.useState(30);
+export default function MasterVolume({ value, setVolume }) {
   
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setVolume(newValue);
   };
 
   return (

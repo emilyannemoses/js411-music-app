@@ -10,8 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function SoundQuality() {
-  const [quality, setQuality] = React.useState('');
+export default function SoundQuality({ quality, setQuality }) {
 
   const handleChange = (event) => {
     setQuality(event.target.value);
@@ -38,9 +37,9 @@ export default function SoundQuality() {
               label="Quality"
               onChange={handleChange}
             >
-              <MenuItem value={10}>Low</MenuItem>
-              <MenuItem value={20}>Normal</MenuItem>
-              <MenuItem value={30}>High</MenuItem>
+              <MenuItem value={1}>Low</MenuItem>
+              <MenuItem value={2}>Normal</MenuItem>
+              <MenuItem value={3}>High</MenuItem>
             </Select>
           </FormControl>
         </Box>
