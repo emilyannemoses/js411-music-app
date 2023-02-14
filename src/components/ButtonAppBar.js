@@ -1,4 +1,5 @@
-import React,{ useState } from 'react';
+import React,{ useContext } from 'react';
+import { LoginContext } from '../App';
 import LogIn from './LogIn';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,11 +10,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export default function ButtonAppBar() {
-  const [showthelogin, setShowLoggedIn] = useState(false)
+  const { setLoggedIn } = useContext(LoginContext);
 
-  const showLogIn = () => {
-    console.log('sanity check')
-    setShowLoggedIn(!showthelogin)
+  const handleClick = (e) => {
+      e.preventDefault();
+      setLoggedIn(!LogIn);
   };
 
   return (<div>
@@ -32,11 +33,10 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          <Button onClick={showLogIn} color="inherit">Log In</Button>
+          <Button onClick={LogIn} color="inherit">Log In</Button>
         </Toolbar>
       </AppBar>
     </Box>
-      {showthelogin && <LogIn />}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState, useContext } from 'react';
 import Dashboard from './Dashboard';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -8,12 +8,14 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { FlashOnRounded } from '@mui/icons-material';
+import { LoginContext } from '../App';
 
 export default function LogIn() {
-    const [login, setLoggedIn] = useState(false)
+    const { setLoggedIn } = useContext(LoginContext);
 
-    const handleClick = () => {
-        setLoggedIn(!login)
+    const handleClick = (e) => {
+        e.preventDefault();
+        setLoggedIn(!LogIn);
     };
 
     return( 
@@ -38,7 +40,6 @@ export default function LogIn() {
             </Stack>
         </CardActions>
         </Card>
-            {login && <Dashboard />}
         </div>
     )
 }
